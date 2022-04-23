@@ -1,0 +1,36 @@
+{% extends 'base.html' %}
+
+{% block title %}
+    Delete Page
+{% endblock %}
+
+{% block content %}
+    <div class="text-center bg-green-600 py-2 text-3xl">
+        <h1>Delete User</h1>
+    </div>
+    <div class="p-5 w-fit mx-auto">
+        <form method="post">
+            {% csrf_token %}
+            <table class="mx-auto border border-2">
+                <tr class="text-white bg-gray-800">
+                    <th>Name</th>
+                    <th>Email</th>
+                    <th>Gender</th>
+                    <th>Status</th>
+                </tr>
+                {% for user in delete %}
+                <tr class="border border-gray-400">
+                    <td class="bg-gray-200 px-5">{{ user.name }}</td>
+                    <td class="bg-gray-200 px-5">{{ user.email }}</td>
+                    <td class="bg-gray-200 px-5">{{ user.gender }}</td>
+                    <td class="bg-gray-200 px-5">{{ user.status }}</td>
+                </tr>
+                </table>
+                <div class="flex justify-between p-5 bg-gray-200">
+                    <p>Are you sure to delete {{ user.name }} ?</p>
+                    <input class="border border-black rounded-lg px-5 bg-red-500 text-white" type="submit" value="Yes">
+                </div>
+                {% endfor %}
+        </form>
+    </div>
+{% endblock %}

@@ -1,0 +1,54 @@
+{% extends 'base.html' %}
+
+{% block title %}
+    New User
+{% endblock %}
+
+{% block content %}
+<div class="text-center bg-green-600 py-2 text-3xl">
+    <h1>New User</h1>
+</div>
+    <form method="POST" class="w-fit mx-auto p-10 m-5 bg-gray-300 border border-black rounded-lg shadow shadow-gray-600"> 
+        {% csrf_token %}
+        <div>
+            <div class="py-2 flex justify-between">
+                <div class="mx-auto">
+                    {{ form.name.label_tag }}
+                </div>
+                <div class="px-2">
+                    {{ form.name }}
+                </div>
+            </div>
+            <div class="py-2 flex justify-between">
+                <div class="mx-auto">
+                    {{ form.email.label_tag }}
+                </div>
+                <div class="px-2">
+                    {{ form.email }}
+                </div>
+            </div>
+            <div class="py-2 flex justify-between">
+                <div class="mx-auto">
+                    {{ form.gender.label_tag }}
+                </div>
+                <div class="px-2">
+                    {{ form.gender }}
+                </div>
+            </div>
+            <div class="py-2 flex justify between">
+                <div class="mx-auto">
+                    {{ form.status.label_tag }}
+                </div>
+                <div class="px-2">
+                    {{ form.status }}
+                </div>
+            </div>
+        </div>
+        <div class="text-center">
+            <input type="submit" class="mt-2 p-3 border border-black border-2 rounded-lg" value="Create New User">
+        </div>
+    </form>
+    {% if request.POST %}
+        User Added Succssfully
+    {% endif %}
+{% endblock %}
